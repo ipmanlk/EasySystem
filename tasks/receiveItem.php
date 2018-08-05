@@ -21,6 +21,11 @@ if (isset($_POST['receiveItemID']) && !empty($_POST['receiveItemID']) && isset($
   mysqli_stmt_bind_param($stmt,'ds',$newQty, $itemID);
   $result = mysqli_stmt_execute($stmt);
   mysqli_stmt_close($stmt);
+
+  $stmt = mysqli_prepare($link, "INSERT INTO item_received(itemID, qty) VALUES (?,?)");
+  mysqli_stmt_bind_param($stmt, "sd", $itemID, $qty);
+  $result = mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
   mysqli_close($link);
 
   if ($result == TRUE) {
