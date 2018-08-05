@@ -74,7 +74,7 @@
         <!-- Modal body -->
         <div class="modal-body">
 
-          <form method="post" id="addItemModalForm">
+          <form method="post" id="addItemModalForm" autocomplete="off">
             <div class="form-group">
               <label for="itemID">Item ID (*):</label>
               <input type="text" class="form-control" id="itemID" name="itemID" maxlength="20">
@@ -154,7 +154,7 @@
         <!-- Modal body -->
         <div class="modal-body">
 
-          <form method="post" id="receiveItemModalForm">
+          <form method="post" id="receiveItemModalForm" autocomplete="off">
             <div class="form-group">
               <label for="receiveItemID">Item ID (*):</label>
               <input type="text" class="form-control" id="receiveItemID" name="receiveItemID" maxlength="20">

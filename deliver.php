@@ -21,7 +21,7 @@
         <div class="card">
           <div class="card-header">Deliver Item</div>
           <div class="card-body">
-            <form method="post" id="deliverItemForm">
+            <form method="post" id="deliverItemForm" autocomplete="off">
               <div class="form-group">
                 <label for="itemID">Item ID (*):</label>
                 <input type="text" class="form-control" id="itemID" name="itemID" maxlength="20">
