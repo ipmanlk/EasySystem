@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" href="#">Easy System</a>
+  <a class="navbar-brand" href="./">Easy System</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavBar">
     <span class="navbar-toggler-icon"></span>
   </button>
