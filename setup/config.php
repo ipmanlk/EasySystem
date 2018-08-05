@@ -1,6 +1,4 @@
 <?php
-date_default_timezone_set("Asia/Colombo");
-
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');

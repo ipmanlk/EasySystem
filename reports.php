@@ -32,7 +32,10 @@
               echo '<tr>';
               echo '<td>' . $row['itemID'] . '</td>';
               echo '<td>' . $row['location'] . '</td>';
-              echo '<td>' . $row['dateTime'] . '</td>';
+              $dateTime= new DateTime($row['dateTime']);
+              $dateTime->setTimezone(new DateTimeZone('Asia/Colombo'));
+              $lkDateTime =  $dateTime->format('Y-m-d - g:i A');
+              echo '<td>' . $lkDateTime . '</td>';
               echo '<td>' . $row['dNote'] . '</td>';
               echo '<td>' . $row['mrn'] . '</td>';
               echo '<td>' . $row['qty'] . '</td>';
