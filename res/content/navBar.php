@@ -14,9 +14,15 @@
       <li class="nav-item">
         <a class="nav-link" href="deliver.php">Deliver</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reports.php">Reports</a>
-      </li>
+      <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+           Reports
+         </a>
+         <div class="dropdown-menu">
+           <a class="dropdown-item" href="deliverReport.php">Deliver Report</a>
+           <a class="dropdown-item" href="receiveReport.php">Receive Report</a>
+         </div>
+       </li>
     </ul>
   </div>
 </nav>
