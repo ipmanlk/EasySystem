@@ -14,6 +14,9 @@
   ?>
 
   <div class="container mt-4">
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+      <h2>Items</h2>
+    </div>
     <div class="row">
       <div class="col-md-12 mb-4">
         <button type="button" class="btn btn-warning" onclick="receiveItems();">Receive Item Stock</button>
