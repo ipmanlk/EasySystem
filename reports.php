@@ -53,6 +53,16 @@
   <script src="./res/js/jquery-3.3.1.min.js" charset="utf-8"></script>
   <script src="./res/js/bootstrap.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="./res/DataTables/datatables.min.js"></script>
-  <script src="./res/js/items.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+  // data table settings
+  $(document).ready(function() {
+    $('.table').DataTable( {
+      dom: 'Bfrtip',
+      buttons: ['pdf','excel'],
+      responsive: true
+    } );
+  } );
+  </script>
 </body>
 </html>

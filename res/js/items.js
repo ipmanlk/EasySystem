@@ -1,10 +1,12 @@
 // data table settings
-$.extend( true, $.fn.dataTable.defaults, {
-  "responsive": true,
-} );
-
 $(document).ready(function() {
-  $('.table').DataTable();
+  $('.table').DataTable( {
+    dom: 'Bfrtip',
+    buttons: ['pdf','excel','print'],
+    responsive: true
+  } );
+
+  //submit form
   submit();
 } );
 
