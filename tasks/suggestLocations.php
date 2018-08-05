@@ -1,5 +1,5 @@
 <?php
-
+require_once 'checkSession.php';
 if (isset($_GET['location']) && !empty($_GET['location'])) {
   require_once '../setup/config.php';
   $location = trim($_GET['location']) . '%';

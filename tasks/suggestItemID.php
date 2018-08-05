@@ -1,5 +1,5 @@
 <?php
-
+require_once 'checkSession.php';
 if (isset($_GET['itemID']) && !empty($_GET['itemID'])) {
   require_once '../setup/config.php';
   $itemID = trim($_GET['itemID']) . '%';
@@ -10,7 +10,7 @@ if (isset($_GET['itemID']) && !empty($_GET['itemID'])) {
   $result = mysqli_stmt_get_result($stmt);
 
   $itemIDs = [];
-
+  
   if (mysqli_num_rows($result) > 0) {
 
     while ($row = mysqli_fetch_array($result)) {

@@ -2,7 +2,7 @@
 // 1 - all done
 // 2 - item ID duplicate
 // 3 - input details are missing
-
+require_once 'checkSession.php';
 if (isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['qty']) && !empty($_POST['qty'])) {
   require_once '../setup/config.php';
   $itemID = trim($_POST['itemID']);

@@ -8,7 +8,10 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.2/b-flash-1.5.2/b-html5-1.5.2/b-print-1.5.2/r-2.2.2/datatables.min.css"/>
 </head>
 <body>
-  <?php require_once './res/content/navBar.php'; ?>
+  <?php
+  require_once './tasks/checkSession.php';
+  require_once './res/content/navBar.php';
+  ?>
 
   <div class="container mt-4">
     <div class="row">

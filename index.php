@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="./res/css/bootstrap.min.css">
 </head>
 <body>
- <?php require_once './res/content/navBar.php'; ?>
+ <?php
+ require_once './tasks/checkSession.php';
+ require_once './res/content/navBar.php';
+ ?>
 
   <div class="container-fluid mt-4">
     <div class="row">

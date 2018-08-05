@@ -3,7 +3,7 @@
 // 2 - item ID does not exist
 // 3 - input details are missing
 // 4 - stock qty is low
-
+require_once 'checkSession.php';
 if (isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['qty']) && !empty($_POST['qty'])) {
   require_once '../setup/config.php';
   $itemID = trim($_POST['itemID']);
