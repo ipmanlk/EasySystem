@@ -13,7 +13,7 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-md-12 mb-4">
-        <button type="button" class="btn btn-warning" onclick="receiveItems();">Recive Item Stock</button>
+        <button type="button" class="btn btn-warning" onclick="receiveItems();">Receive Item Stock</button>
         <button type="button" class="btn btn-success" onclick="addItems();">Add New Item</button>
       </div>
     </div>
@@ -165,7 +165,7 @@
               <input type="number" class="form-control" id="receiveQty" name="receiveQty" maxlength="10">
             </div>
 
-            <button id="receiveItemBtn" onclick="receiveItem();" class="btn btn-primary">Recive Item Stock</button>
+            <button id="receiveItemBtn" onclick="receiveItem();" class="btn btn-primary">Receive Item Stock</button>
 
             <div style="display:none;" class="alert alert-success mt-3" id="receiveItemModalOutput">
 
