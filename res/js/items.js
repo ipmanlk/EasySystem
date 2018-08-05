@@ -3,12 +3,33 @@ $(document).ready(function() {
   $('.table').DataTable( {
     dom: 'Bfrtip',
     buttons: ['pdf','excel','print'],
-    responsive: true
+    responsive: true,
+
   } );
 
   //submit form
   submit();
 } );
+
+
+//load items to data table
+function loadItems() {
+  const dataTable = $('.table').DataTable();
+  dataTable.clear()
+  $.get("./tasks/getItems.php" , function(data) {
+    const itemsData = JSON.parse(data);
+    for (item in itemsData) {
+      dataTable.row.add([
+        itemsData[item].itemID,
+        itemsData[item].itemDes,
+        itemsData[item].stockingUM,
+        itemsData[item].partNum,
+        itemsData[item].qty,
+        `<button type="button" class="btn btn-primary" onclick="editItem('${itemsData[item].itemID}')">Edit</button> <button type="button" class="btn btn-danger" onclick="deleteItem('${itemsData[item].itemID}')">Delete</button>`
+      ]).draw();
+    }
+  });
+}
 
 function submit() {
   $("#addItemModalForm").submit(function(e) {
@@ -173,11 +194,11 @@ function showOutputMsg(id,type,msg) {
 
 //on modal Close
 $('#addItemModal').on('hidden.bs.modal', function () {
-  location.reload();
+  loadItems();
 })
 
 $('#receiveItemModal').on('hidden.bs.modal', function () {
-  location.reload();
+  loadItems();
 })
 
 //check values is not null & empty
