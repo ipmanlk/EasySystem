@@ -3,8 +3,8 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavBar">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="mainNavBar">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse justify-content-between" id="mainNavBar">
+    <ul class="navbar-nav mr-aut">
       <li class="nav-item">
         <a class="nav-link" href="./">Dashboard</a>
       </li>
@@ -15,14 +15,20 @@
         <a class="nav-link" href="deliver.php">Deliver</a>
       </li>
       <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-           Reports
-         </a>
-         <div class="dropdown-menu">
-           <a class="dropdown-item" href="deliverReport.php">Deliver Report</a>
-           <a class="dropdown-item" href="receiveReport.php">Receive Report</a>
-         </div>
-       </li>
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Reports
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="deliverReport.php">Deliver Report</a>
+          <a class="dropdown-item" href="receiveReport.php">Receive Report</a>
+        </div>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="./tasks/logout.php">Log Out</a>
+      </li>
     </ul>
   </div>
 </nav>
