@@ -1,20 +1,36 @@
 // data table settings
+const dataTable = $('.table').DataTable( {
+  dom: 'Bfrtip',
+  buttons: [
+    {
+      extend: 'pdfHtml5',
+      exportOptions: {
+        columns: [ 0, ':visible' ]
+      }
+    },
+    {
+      extend: 'excelHtml5',
+      exportOptions: {
+        columns: [ 0, 1, 2, 3, 4]
+      }
+    },
+    {
+      extend: 'print',
+      exportOptions: {
+        columns: [ 0, 1, 2, 3, 4]
+      }
+    }
+  ],
+  responsive: true
+});
+
 $(document).ready(function() {
-  $('.table').DataTable( {
-    dom: 'Bfrtip',
-    buttons: ['pdf','excel','print'],
-    responsive: true,
-
-  } );
-
   //submit form
   submit();
 } );
 
-
 //load items to data table
 function loadItems() {
-  const dataTable = $('.table').DataTable();
   dataTable.clear();
   $.get("./tasks/getItems.php" , function(data) {
     const itemsData = JSON.parse(data);
@@ -127,7 +143,7 @@ function deleteItem(itemID) {
   $('#confirmDelete').click(function() {
     $.get("./tasks/deleteItem.php?itemID=" + itemID, function(data) {
       if (data == '1') {
-        $('.table').DataTable().clear().draw();
+        dataTable.clear().draw();
         loadItems();
         $('#confirmModal').modal('hide');
       } else {
