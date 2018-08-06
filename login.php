@@ -50,33 +50,6 @@
   <!-- scripts -->
   <script src="./res/js/jquery-3.3.1.min.js" charset="utf-8"></script>
   <script src="./res/js/bootstrap.min.js" charset="utf-8"></script>
-
-  <script type="text/javascript">
-  $(document).ready(function() {
-    submit();
-  } );
-
-  function submit() {
-    $("#formLogin").submit(function(e) {
-      e.preventDefault();
-      $.ajax({
-        type: 'POST',
-        url: './tasks/login.php',
-        data: $('form').serialize(),
-        dataType: "html",
-        async: true,
-        success: function(msg) {
-          $("#deliverItemOutput").fadeIn();
-          if (msg !== '1') {
-            alert("Wrong Password!");
-          } else {
-            window.location='index.php';
-          }
-        }
-      });
-    });
-  }
-
-  </script>
+  <script src="./res/js/login.js" charset="utf-8"></script>
 </body>
 </html>
