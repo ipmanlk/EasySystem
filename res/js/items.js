@@ -15,7 +15,7 @@ $(document).ready(function() {
 //load items to data table
 function loadItems() {
   const dataTable = $('.table').DataTable();
-  dataTable.clear()
+  dataTable.clear();
   $.get("./tasks/getItems.php" , function(data) {
     const itemsData = JSON.parse(data);
     for (item in itemsData) {
@@ -70,7 +70,10 @@ function addItem() {
     success: function(msg) {
       $("#addItemModalOutput").fadeIn();
       if (msg == 1) {
+        loadItems();
         showOutputMsg("#addItemModalOutput","good","Item added.");
+        //clear input form
+        $('#addItemModalForm').find('input').val('');
       } else if (msg == 2) {
         showOutputMsg("#addItemModalOutput","bad","Item ID is already in the database!.");
       } else {
@@ -107,6 +110,7 @@ function updateItem() {
     success: function(msg) {
       $("#addItemModalOutput").fadeIn();
       if (msg == 1) {
+        loadItems();
         showOutputMsg("#addItemModalOutput","good","Item updated.");
       } else if (msg == 4) {
         showOutputMsg("#addItemModalOutput","bad","Error.");
@@ -120,10 +124,13 @@ function updateItem() {
 //delete item
 function deleteItem(itemID) {
   $('#confirmModal').modal('show');
+  const row = $(this).closest('tr');
   $('#confirmDelete').click(function() {
     $.get("./tasks/deleteItem.php?itemID=" + itemID, function(data) {
       if (data == '1') {
-        location.reload();
+        $('.table').DataTable().clear().draw();
+        loadItems();
+        $('#confirmModal').modal('hide');
       } else {
         alert("Something went wrong!");
       }
@@ -145,7 +152,10 @@ function receiveItem() {
     success: function(msg) {
       $("#receiveItemModalOutput").fadeIn();
       if (msg == 1) {
+        loadItems();
         showOutputMsg("#receiveItemModalOutput","good","New stock added!");
+        $('#receiveItemModalForm').find('input').val('');
+
       } else if (msg == 4) {
         showOutputMsg("#receiveItemModalOutput","bad","Error.");
       } else {
@@ -192,14 +202,14 @@ function showOutputMsg(id,type,msg) {
   $(id).fadeIn();
 }
 
-//on modal Close
-$('#addItemModal').on('hidden.bs.modal', function () {
-  loadItems();
-})
-
-$('#receiveItemModal').on('hidden.bs.modal', function () {
-  loadItems();
-})
+// //on modal Close
+// $('#addItemModal').on('hidden.bs.modal', function () {
+//   loadItems();
+// })
+//
+// $('#receiveItemModal').on('hidden.bs.modal', function () {
+//   loadItems();
+// })
 
 //check values is not null & empty
 function notEmpty(val) {
