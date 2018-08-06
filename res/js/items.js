@@ -124,7 +124,6 @@ function updateItem() {
 //delete item
 function deleteItem(itemID) {
   $('#confirmModal').modal('show');
-  const row = $(this).closest('tr');
   $('#confirmDelete').click(function() {
     $.get("./tasks/deleteItem.php?itemID=" + itemID, function(data) {
       if (data == '1') {
