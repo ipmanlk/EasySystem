@@ -1,14 +1,51 @@
 // data table settings
-$(document).ready(function() {
-  $('.table').DataTable( {
-    dom: 'Bfrtip',
-    buttons: ['pdf','excel','print'],
-    responsive: true
-  } );
+const dataTable = $('.table').DataTable( {
+  dom: 'Bfrtip',
+  buttons: [
+    {
+      extend: 'pdfHtml5',
+      exportOptions: {
+        columns: [ 0, ':visible' ]
+      }
+    },
+    {
+      extend: 'excelHtml5',
+      exportOptions: {
+        columns: [ 0, 1, 2, 3, 4]
+      }
+    },
+    {
+      extend: 'print',
+      exportOptions: {
+        columns: [ 0, 1, 2, 3, 4]
+      }
+    }
+  ],
+  responsive: true
+});
 
+$(document).ready(function() {
   //submit form
   submit();
 } );
+
+//load items to data table
+function loadItems() {
+  dataTable.clear();
+  $.get("./tasks/getItems.php" , function(data) {
+    const itemsData = JSON.parse(data);
+    for (item in itemsData) {
+      dataTable.row.add([
+        itemsData[item].itemID,
+        itemsData[item].itemDes,
+        itemsData[item].stockingUM,
+        itemsData[item].partNum,
+        itemsData[item].qty,
+        `<button type="button" class="btn btn-primary" onclick="editItem('${itemsData[item].itemID}')">Edit</button> <button type="button" class="btn btn-danger" onclick="deleteItem('${itemsData[item].itemID}')">Delete</button>`
+      ]).draw();
+    }
+  });
+}
 
 function submit() {
   $("#addItemModalForm").submit(function(e) {
@@ -49,7 +86,10 @@ function addItem() {
     success: function(msg) {
       $("#addItemModalOutput").fadeIn();
       if (msg == 1) {
+        loadItems();
         showOutputMsg("#addItemModalOutput","good","Item added.");
+        //clear input form
+        $('#addItemModalForm').find('input').val('');
       } else if (msg == 2) {
         showOutputMsg("#addItemModalOutput","bad","Item ID is already in the database!.");
       } else {
@@ -86,6 +126,7 @@ function updateItem() {
     success: function(msg) {
       $("#addItemModalOutput").fadeIn();
       if (msg == 1) {
+        loadItems();
         showOutputMsg("#addItemModalOutput","good","Item updated.");
       } else if (msg == 4) {
         showOutputMsg("#addItemModalOutput","bad","Error.");
@@ -102,7 +143,9 @@ function deleteItem(itemID) {
   $('#confirmDelete').click(function() {
     $.get("./tasks/deleteItem.php?itemID=" + itemID, function(data) {
       if (data == '1') {
-        location.reload();
+        dataTable.clear().draw();
+        loadItems();
+        $('#confirmModal').modal('hide');
       } else {
         alert("Something went wrong!");
       }
@@ -124,7 +167,10 @@ function receiveItem() {
     success: function(msg) {
       $("#receiveItemModalOutput").fadeIn();
       if (msg == 1) {
+        loadItems();
         showOutputMsg("#receiveItemModalOutput","good","New stock added!");
+        $('#receiveItemModalForm').find('input').val('');
+
       } else if (msg == 4) {
         showOutputMsg("#receiveItemModalOutput","bad","Error.");
       } else {
@@ -171,14 +217,14 @@ function showOutputMsg(id,type,msg) {
   $(id).fadeIn();
 }
 
-//on modal Close
-$('#addItemModal').on('hidden.bs.modal', function () {
-  location.reload();
-})
-
-$('#receiveItemModal').on('hidden.bs.modal', function () {
-  location.reload();
-})
+// //on modal Close
+// $('#addItemModal').on('hidden.bs.modal', function () {
+//   loadItems();
+// })
+//
+// $('#receiveItemModal').on('hidden.bs.modal', function () {
+//   loadItems();
+// })
 
 //check values is not null & empty
 function notEmpty(val) {
