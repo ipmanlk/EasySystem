@@ -23,7 +23,7 @@
                 <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
                   <div class="form-group">
                     <label for="uname1">Username</label>
-                    <input type="text" class="form-control form-control-lg rounded-0" value="ShaNiraj" name="uname" id="uname1" required>
+                    <input type="text" class="form-control form-control-lg rounded-0" value="" name="uname" id="uname1" required>
                   </div>
                   <div class="form-group">
                     <label>Password</label>

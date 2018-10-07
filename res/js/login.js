@@ -14,7 +14,7 @@ function submit() {
       success: function(msg) {
         $("#deliverItemOutput").fadeIn();
         if (msg !== '1') {
-          alert("Wrong Password!");
+          alert("Wrong Username or Password!");
         } else {
           window.location='index.php';
         }
